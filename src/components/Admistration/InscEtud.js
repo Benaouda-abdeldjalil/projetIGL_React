@@ -18,7 +18,43 @@ import {
 
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
-class RegistrationForm extends React.Component {
+
+const residences = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+class InscriptionEtud extends React.Component {
   state = {
     confirmDirty: false,
     autoCompleteResult: [],
@@ -26,7 +62,6 @@ class RegistrationForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
@@ -92,21 +127,30 @@ class RegistrationForm extends React.Component {
         },
       },
     };
-   
- return (
-      <div style={{height:"600px"}} >
-         
+    const prefixSelector = getFieldDecorator('prefix', {
+      initialValue: '86',
+    })(
+      <Select style={{ width: 70 }}>
+        <Option value="86">+86</Option>
+        <Option value="87">+87</Option>
+      </Select>,
+    );
 
+    const websiteOptions = autoCompleteResult.map(website => (
+      <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
+    ));
 
+    return (
+      <div >
+        
   <div >
     <Button type="primary" block>
   
-      <span className='bt'>Inscription Des Enseignants</span>
+      <span className='bt'>Inscription Des Etudiants</span>
     </Button>
    
   </div><br/>
-  <div style={{float: "left" , width : "800px"}}>
-      
+    <div style={{float: "left" , width : "800px"}}>
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
         <Form.Item label="Nom">
           {getFieldDecorator('Nom', {
@@ -114,7 +158,7 @@ class RegistrationForm extends React.Component {
            
               {
                 required: true,
-                message: 'Please input your Nom!',
+                message: 'Please input his first-name!',
               },
             ],
           })(<Input />)}
@@ -125,18 +169,18 @@ class RegistrationForm extends React.Component {
            
               {
                 required: true,
-                message: 'Please input your Prenom!',
+                message: 'Please input his last-name!',
               },
             ],
           })(<Input />)}
         </Form.Item>
-        <Form.Item label="Numéro d'enseignant">
+        <Form.Item label="Numéro d'inscreption">
           {getFieldDecorator('inscr', {
             rules: [
            
               {
                 required: true,
-                message: 'Please input your Numero enseignant!',
+                message: 'Please input his Number of inscreption!',
               },
             ],
           })(<Input />)}
@@ -147,18 +191,7 @@ class RegistrationForm extends React.Component {
            
               {
                 required: true,
-                message: 'Please input your E-mail',
-              },
-            ],
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item label="Grade">
-          {getFieldDecorator('Grade', {
-            rules: [
-           
-              {
-                required: true,
-                message: 'Please input your Grade',
+                message: 'Please input his E-mail',
               },
             ],
           })(<Input />)}
@@ -173,7 +206,7 @@ class RegistrationForm extends React.Component {
            
               {
                 required: true,
-                message: 'Please input your date de naissance',
+                message: 'Please input his birth date',
               },
             ],
           })}
@@ -184,40 +217,38 @@ class RegistrationForm extends React.Component {
            
               {
                 required: true,
-                message: 'Please input your lieu de naissance',
+                message: 'Please input his place of birth',
               },
             ],
           })(<Input />)}
         </Form.Item>
-        
-        <Form.Item label="date de recrutement" >
-        <DatePicker style={{ width: '100%' }} />
-          {getFieldDecorator('date', {
+        <Form.Item label="Année">
+          {getFieldDecorator('Année', {
             rules: [
            
               {
                 required: true,
-                message: 'Please input here date de recrutement',
+                message: 'Please input his year of study',
               },
             ],
-          })}
-        </Form.Item> 
+          })(<Input />)}
+        </Form.Item>
+       
         
-          <center>
+      <center>
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
-             Inscrir
+            Inscrir
           </Button>
         </Form.Item>
         </center>
       </Form>
-      
       </div>
       </div>
     );
   }
 }
 
-const InscrEnsei = Form.create({ name: 'register' })(RegistrationForm);
+const InscEtud = Form.create({ name: 'register' })(InscriptionEtud);
 
-export default InscrEnsei;
+export default InscEtud;
