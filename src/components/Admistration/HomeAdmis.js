@@ -87,15 +87,14 @@ class HomeAdmis extends React.Component {
           </Menu>
         </Sider>
         <Layout>
-          <Header style={{ background: 'rgb(83, 169, 250)', padding: 0 }} >
-         
-          </Header>
+          <Header style={{ background: 'rgb(83, 169, 250)', padding: 0 }} />
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
                </Breadcrumb>
             <div style={{ padding: 24, background: '#fff', minHeight: 600 }}>
             
-        <Switch>
+            <Switch>
+       
        <Route exact   path="/profile"  >
          <ProfileAd />
        </Route>

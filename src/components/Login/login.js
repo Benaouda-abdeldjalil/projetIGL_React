@@ -49,78 +49,85 @@ class NormalLoginForm extends React.Component {
       motpass:this.state.motpass,
     }
     login(user)
+   
+   
   }
 
 
   render() {
    
     const { getFieldDecorator } = this.props.form;
-    return (
-      <div >
-       <Header style={{ background:"rgb(83, 169, 250) ", padding: 0 }} />
-     
-      <div className="login" id="form"    style={{paddingBottom:"10px",paddingTop:"150px"}}>
-      
-      <Form 
-      onSubmit={this.onSubmit} className="login-form">
-      <Form.Item>
-      <h1 id="myHeader"
-      >Login</h1>
-        </Form.Item>
-        <Form.Item>
-          {getFieldDecorator('username', {
-            rules: [{ required: true, message: 'Please input your E-mail!' }],
-          })(
-            <Input
-              name="email"
-              value={this.state.email}
-              onChange={this.onChange}
-              prefix={<Icon type="user" style={{ color: 'rgb(83, 169, 250) ' }} />}
-              placeholder="E-mail"
-            />,
-          )}
-        </Form.Item>
-        <Form.Item>
-          {getFieldDecorator('password', {
-            rules: [{ required: true, message: 'Please input your Password!' }],
-          })(
-            <Input
-              name="motpass"
-              value={this.state.motpass}
-              onChange={this.onChange}
-              prefix={<Icon type="lock" style={{ color: 'rgb(83, 169, 250) ' }} />}
-              type="password"
-              placeholder="Password"
-            />,
-          )}
-        </Form.Item>
-        <Form.Item>
-        <Button 
-      
+    if(!localStorage.getItem('user_conect')){
+      return (
+        <div >
+         <Header style={{ background:"rgb(83, 169, 250) ", padding: 0 }} />
        
-       type="primary"
-         htmlType="submit" className="login-form-button">
-            Log in
-          </Button>
-        </Form.Item>
+        <div className="login" id="form"    style={{paddingBottom:"10px",paddingTop:"150px"}}>
+        
+        <Form 
+        onSubmit={this.onSubmit} className="login-form">
         <Form.Item>
-          {getFieldDecorator('remember', {
-            valuePropName: 'checked',
-            initialValue: true,
-          })(<Checkbox>Remember me</Checkbox>)}
-          <a className="login-form-forgot" href="">
-            Forgot password
-          </a>
-         </Form.Item>
+        <h1 id="myHeader"
+        >Login</h1>
+          </Form.Item>
+          <Form.Item>
+            {getFieldDecorator('username', {
+              rules: [{ required: true, message: 'Please input your E-mail!' }],
+            })(
+              <Input
+                name="email"
+                value={this.state.email}
+                onChange={this.onChange}
+                prefix={<Icon type="user" style={{ color: 'rgb(83, 169, 250) ' }} />}
+                placeholder="E-mail"
+              />,
+            )}
+          </Form.Item>
+          <Form.Item>
+            {getFieldDecorator('password', {
+              rules: [{ required: true, message: 'Please input your Password!' }],
+            })(
+              <Input
+                name="motpass"
+                value={this.state.motpass}
+                onChange={this.onChange}
+                prefix={<Icon type="lock" style={{ color: 'rgb(83, 169, 250) ' }} />}
+                type="password"
+                placeholder="Password"
+              />,
+            )}
+          </Form.Item>
+          <Form.Item>
+          <Button 
         
-
+         
+         type="primary"
+           htmlType="submit" className="login-form-button">
+              Log in
+            </Button>
+          </Form.Item>
+          <Form.Item>
+            {getFieldDecorator('remember', {
+              valuePropName: 'checked',
+              initialValue: true,
+            })(<Checkbox>Remember me</Checkbox>)}
+            <a className="login-form-forgot" href="">
+              Forgot password
+            </a>
+           </Form.Item>
+          
+  
+          
+        </Form>
+        </div>
+       
+        </div>
         
-      </Form>
-      </div>
-     
-      </div>
-      
-    );
+      );
+    }else{
+      window.location="/";
+      return ('')
+    }
   }
 }
 
