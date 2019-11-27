@@ -1,4 +1,7 @@
 import React, { Component }  from 'react';
+import axios from 'axios';
+import $ from 'jquery';
+import ReactDOM from 'react-dom';
 
 
 import {
@@ -55,6 +58,32 @@ const residences = [
 ];
 
 class InscriptionEtud extends React.Component {
+  constructor(props){
+		super(props);
+	}
+  Addetudiant(e){
+    e.preventDefault();
+    axios
+		.post('http://127.0.0.1:8000/api/etudiant/add',{
+			date_naissance:$('.Date_etud').find('input').val(),
+      prenom:$('.etud_Prenom').val(),
+      name:$('.etud_Nom').val(),
+      email:$('.email_etud').val(),
+      num_inscr:$('.num_inscr_etud').val(),
+      lieu_naissance:$('.lieu_etud').val(),
+      année:$('.année').val(),
+      groupe:$('.groupe').val()
+		})
+		.then(res=>{
+			alert()
+			console.log(res)
+			
+		})
+		.catch(err=>{
+      alert('error');
+      console.log(err)
+    })
+  }
   state = {
     confirmDirty: false,
     autoCompleteResult: [],
@@ -141,6 +170,7 @@ class InscriptionEtud extends React.Component {
     ));
 
     return (
+      <div style={{height:"600px"}} >
       <div >
         
   <div >
@@ -151,7 +181,7 @@ class InscriptionEtud extends React.Component {
    
   </div><br/>
     <div style={{float: "left" , width : "800px"}}>
-      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+      <Form {...formItemLayout} onSubmit={this.Addetudiant}>
         <Form.Item label="Nom">
           {getFieldDecorator('Nom', {
             rules: [
@@ -161,7 +191,7 @@ class InscriptionEtud extends React.Component {
                 message: 'Please input his first-name!',
               },
             ],
-          })(<Input />)}
+          })(<Input className="etud_Nom" />)}
         </Form.Item>
         <Form.Item label="Prenom">
           {getFieldDecorator('Prenom', {
@@ -172,7 +202,7 @@ class InscriptionEtud extends React.Component {
                 message: 'Please input his last-name!',
               },
             ],
-          })(<Input />)}
+          })(<Input className="etud_Prenom" />)}
         </Form.Item>
         <Form.Item label="Numéro d'inscreption">
           {getFieldDecorator('inscr', {
@@ -183,7 +213,7 @@ class InscriptionEtud extends React.Component {
                 message: 'Please input his Number of inscreption!',
               },
             ],
-          })(<Input />)}
+          })(<Input className="num_inscr_etud" />)}
         </Form.Item>
         <Form.Item label="E-mail">
           {getFieldDecorator('Email', {
@@ -194,13 +224,13 @@ class InscriptionEtud extends React.Component {
                 message: 'Please input his E-mail',
               },
             ],
-          })(<Input />)}
+          })(<Input className="email_etud" />)}
         </Form.Item>
         
         
 
         <Form.Item label="date de naissance" >
-        <DatePicker style={{ width: '100%' }} />
+        <DatePicker className="Date_etud" style={{ width: '100%' }} />
           {getFieldDecorator('date', {
             rules: [
            
@@ -220,7 +250,7 @@ class InscriptionEtud extends React.Component {
                 message: 'Please input his place of birth',
               },
             ],
-          })(<Input />)}
+          })(<Input className="lieu_etud" />)}
         </Form.Item>
         <Form.Item label="Année">
           {getFieldDecorator('Année', {
@@ -231,9 +261,19 @@ class InscriptionEtud extends React.Component {
                 message: 'Please input his year of study',
               },
             ],
-          })(<Input />)}
+          })(<Input className="année" />)}
         </Form.Item>
-       
+        <Form.Item label="Groupe">
+          {getFieldDecorator('Groupe', {
+            rules: [
+           
+              {
+                required: true,
+                message: 'Please input his Groupe of study',
+              },
+            ],
+          })(<Input className="groupe" />)}
+        </Form.Item>
         
       <center>
         <Form.Item {...tailFormItemLayout}>
@@ -243,6 +283,7 @@ class InscriptionEtud extends React.Component {
         </Form.Item>
         </center>
       </Form>
+      </div>
       </div>
       </div>
     );

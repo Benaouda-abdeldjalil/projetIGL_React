@@ -1,6 +1,7 @@
 import React, { Component }  from 'react';
-
-
+import axios from 'axios';
+import $ from 'jquery';
+import ReactDOM from 'react-dom';
 import {
   Form,
   Input,
@@ -19,6 +20,32 @@ import {
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
 class RegistrationForm extends React.Component {
+  constructor(props){
+		super(props);
+	}
+  Addensg(e){
+    e.preventDefault();
+    axios
+		.post('http://127.0.0.1:8000/api/ensg/add',{
+      date_naissance:$('.Date_ensg').find('input').val(),
+      date_rec:$('.Date_rec').find('input').val(),
+      prenom:$('.ensg_Prenom').val(),
+      name:$('.ensg_Nom').val(),
+      email:$('.email_ensg').val(),
+      num_inscr:$('.num_inscr_ensg').val(),
+      lieu_naissance:$('.lieu_ensg').val(),
+      grade:$('.grade').val(),
+		})
+		.then(res=>{
+			alert()
+			console.log(res)
+			
+		})
+		.catch(err=>{
+      alert('error');
+      console.log(err)
+    })
+  }
   state = {
     confirmDirty: false,
     autoCompleteResult: [],
@@ -107,7 +134,7 @@ class RegistrationForm extends React.Component {
   </div><br/>
   <div style={{float: "left" , width : "800px"}}>
       
-      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+      <Form {...formItemLayout} onSubmit={this.Addensg}>
         <Form.Item label="Nom">
           {getFieldDecorator('Nom', {
             rules: [
@@ -117,7 +144,7 @@ class RegistrationForm extends React.Component {
                 message: 'Please input your Nom!',
               },
             ],
-          })(<Input />)}
+          })(<Input className="ensg_Nom"/>)}
         </Form.Item>
         <Form.Item label="Prenom">
           {getFieldDecorator('Prenom', {
@@ -128,7 +155,7 @@ class RegistrationForm extends React.Component {
                 message: 'Please input your Prenom!',
               },
             ],
-          })(<Input />)}
+          })(<Input className="ensg_Prenom" />)}
         </Form.Item>
         <Form.Item label="Numéro d'enseignant">
           {getFieldDecorator('inscr', {
@@ -139,7 +166,7 @@ class RegistrationForm extends React.Component {
                 message: 'Please input your Numero enseignant!',
               },
             ],
-          })(<Input />)}
+          })(<Input className="num_inscr_ensg" />)}
         </Form.Item>
         <Form.Item label="E-mail">
           {getFieldDecorator('Email', {
@@ -150,7 +177,7 @@ class RegistrationForm extends React.Component {
                 message: 'Please input your E-mail',
               },
             ],
-          })(<Input />)}
+          })(<Input className="email_ensg" />)}
         </Form.Item>
         <Form.Item label="Grade">
           {getFieldDecorator('Grade', {
@@ -161,13 +188,13 @@ class RegistrationForm extends React.Component {
                 message: 'Please input your Grade',
               },
             ],
-          })(<Input />)}
+          })(<Input className="grade" />)}
         </Form.Item>
         
         
 
         <Form.Item label="date de naissance" >
-        <DatePicker style={{ width: '100%' }} />
+        <DatePicker className="Date_ensg" style={{ width: '100%' }} />
           {getFieldDecorator('date', {
             rules: [
            
@@ -187,11 +214,11 @@ class RegistrationForm extends React.Component {
                 message: 'Please input your lieu de naissance',
               },
             ],
-          })(<Input />)}
+          })(<Input className="lieu_ensg"/>)}
         </Form.Item>
         
         <Form.Item label="date de recrutement" >
-        <DatePicker style={{ width: '100%' }} />
+        <DatePicker className="Date_rec" style={{ width: '100%' }} />
           {getFieldDecorator('date', {
             rules: [
            
