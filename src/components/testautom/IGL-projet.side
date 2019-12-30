@@ -1,0 +1,118 @@
+{
+  "id": "9472f23e-5194-4f83-8d73-b9286bb68394",
+  "version": "2.0",
+  "name": "IGL-projet",
+  "url": "http://localhost:3000",
+  "tests": [{
+    "id": "1815293f-a3e0-4566-93d0-75e27a26d388",
+    "name": "LoginLogoutTestAutoma",
+    "commands": [{
+      "id": "205f37c4-a97d-494e-bee1-5a45064f1121",
+      "comment": "",
+      "command": "open",
+      "target": "/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0ed491f1-ae71-4f37-8940-50a63facaf01",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x728",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a30bbbf4-7f78-4009-9cee-b53367490f88",
+      "comment": "",
+      "command": "click",
+      "target": "id=normal_login_username",
+      "targets": [
+        ["id=normal_login_username", "id"],
+        ["name=email", "name"],
+        ["css=#normal_login_username", "css:finder"],
+        ["xpath=//input[@id='normal_login_username']", "xpath:attributes"],
+        ["xpath=//div[@id='form']/form/div[2]/div/div/span/span/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b1e52869-e350-4a34-914d-c13e5eeef466",
+      "comment": "",
+      "command": "type",
+      "target": "id=normal_login_username",
+      "targets": [
+        ["id=normal_login_username", "id"],
+        ["name=email", "name"],
+        ["css=#normal_login_username", "css:finder"],
+        ["xpath=//input[@id='normal_login_username']", "xpath:attributes"],
+        ["xpath=//div[@id='form']/form/div[2]/div/div/span/span/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "admin@esi.dz"
+    }, {
+      "id": "e5b8878a-dfaf-48bd-a3c7-dd158eeb36ae",
+      "comment": "",
+      "command": "click",
+      "target": "id=normal_login_password",
+      "targets": [
+        ["id=normal_login_password", "id"],
+        ["name=motpass", "name"],
+        ["css=#normal_login_password", "css:finder"],
+        ["xpath=//input[@id='normal_login_password']", "xpath:attributes"],
+        ["xpath=//div[@id='form']/form/div[3]/div/div/span/span/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/span/span/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e25d1988-a612-42d2-90f5-6ebef35beae8",
+      "comment": "",
+      "command": "type",
+      "target": "id=normal_login_password",
+      "targets": [
+        ["id=normal_login_password", "id"],
+        ["name=motpass", "name"],
+        ["css=#normal_login_password", "css:finder"],
+        ["xpath=//input[@id='normal_login_password']", "xpath:attributes"],
+        ["xpath=//div[@id='form']/form/div[3]/div/div/span/span/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/span/span/input", "xpath:position"]
+      ],
+      "value": "admin@esi.dz"
+    }, {
+      "id": "405a6bbc-edc5-42d6-8943-28fc9483be7c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn",
+      "targets": [
+        ["css=.ant-btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='form']/form/div[4]/div/div/span/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Log in')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0e056d6f-64b1-4206-952a-e83a7482d9f3",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Deconxion",
+      "targets": [
+        ["linkText=Deconxion", "linkText"],
+        ["css=.ant-menu-item-active > a", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/aside/div/ul/li[5]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/Deconxion')]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Deconxion')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "f2b08b59-a457-4f51-b25b-0a74dc7dae34",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["1815293f-a3e0-4566-93d0-75e27a26d388"]
+  }],
+  "urls": ["http://localhost:3000/"],
+  "plugins": []
+}

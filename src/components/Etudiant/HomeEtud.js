@@ -3,6 +3,7 @@ import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import{Link,Route,Switch} from "react-router-dom"
 import   ProfileEtud from "./ProfileEtud.js"
 import ChangePass from "./passwordEtud.js"
+import ConsulterNote from "./ConsulterNote.js"
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -35,9 +36,9 @@ class HomeEtud extends React.Component {
               </Link>
             </Menu.Item>
             <Menu.Item key="2">
-              <Link to="./Emploi">
+              <Link to="./Consulter">
               <Icon type="unordered-list" />
-              <span>emploi du temps</span>
+              <span>Consulter les notes</span>
             </Link>
             </Menu.Item>
           <Menu.Item key="3">
@@ -67,7 +68,8 @@ class HomeEtud extends React.Component {
             <Route exact   path="/Profile"  >
          <ProfileEtud />
        </Route>
-      <Route path="/Emploi"  >
+      <Route path="/Consulter"  >
+        <ConsulterNote/>
         </Route>
         <Route path="/Password"  >
         <ChangePass />
