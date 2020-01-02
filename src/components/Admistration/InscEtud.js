@@ -75,12 +75,12 @@ class InscriptionEtud extends React.Component {
       groupe:$('.groupe').val()
 		})
 		.then(res=>{
-			alert()
+			alert('Etudiant est inscrit avec succès')
 			console.log(res)
 			
 		})
 		.catch(err=>{
-      alert('error');
+      alert('erreur');
       console.log(err)
     })
   }

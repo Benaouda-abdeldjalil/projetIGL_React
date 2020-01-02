@@ -37,12 +37,12 @@ class RegistrationForm extends React.Component {
       grade:$('.grade').val(),
 		})
 		.then(res=>{
-			alert()
+			alert('Enseignant est inscrit avec succès')
 			console.log(res)
 			
 		})
 		.catch(err=>{
-      alert('error');
+      alert('erreur');
       console.log(err)
     })
   }

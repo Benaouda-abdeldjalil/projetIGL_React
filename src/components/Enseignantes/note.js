@@ -1,5 +1,7 @@
 import React ,{Component} from "react"
-
+import axios from 'axios';
+import $ from 'jquery';
+import ReactDOM from 'react-dom';
 import { 
   Upload, 
   Icon, 
@@ -35,12 +37,37 @@ const props = {
 };
 
 class Note extends React.Component {
+  constructor(props){
+		super(props);
+	}
+  Envoinote(e){
+    e.preventDefault();
+    axios
+		.post('http://127.0.0.1:8000/api/note',{
+			niveau:$('.niveau').find('input').val(),
+      groupe:$('.groupe').find('input').val(),
+      fichier:$('.fichier').find('input').val(),
+		})
+		.then(res=>{
+			alert()
+			console.log(res)
+			
+		})
+		.catch(err=>{
+      alert('error');
+      console.log(err)
+    })
+  }
+  state = {
+    confirmDirty: false,
+    autoCompleteResult: [],
+  };
  render (){
 return (
     
- <div>
+ <div onSubmit={this.Envoinote}>
      <br /><br /><br /><br />
-    <Dragger {...props}>
+    <Dragger {...props} className="fichier">
     <p className="ant-upload-drag-icon">
       <Icon type="inbox" />
     </p>
@@ -57,25 +84,24 @@ return (
     <h3>Choisez l'année et le groupe concernant pour l'affichage</h3>
 
         <InputGroup compact>
-          <Select defaultValue="Année">
-            <Option value="1CP">1CP</Option>
-            <Option value="2CP">2CP</Option>
-            <Option value="1CS">1CS</Option>
-            <Option value="2CS">2CS</Option>
-            <Option value="3CS">3CS</Option>
+          <Select defaultValue="Année" className="niveau">
+            <Option value="1CP">1cp</Option>
+            <Option value="2CP">2cp</Option>
+            <Option value="1CS">1cs</Option>
+            <Option value="2CS">2cs</Option>
             
           </Select>
-          <Select defaultValue="Groupe">
-            <Option value="g1">G1</Option>
-            <Option value="g2">G2</Option>
-            <Option value="g3">G3</Option>
-            <Option value="g4">G4</Option>
-            <Option value="g5">G5</Option>
-            <Option value="g6">G6</Option>
+          <Select defaultValue="Groupe" className="groupe">
+            <Option value="g1">1</Option>
+            <Option value="g2">2</Option>
+            <Option value="g3">3</Option>
+            <Option value="g4">4</Option>
+            <Option value="g5">5</Option>
+            <Option value="g6">6</Option>
           </Select>
         </InputGroup>
         <br /><br />
-     <Button type="primary">Envoyer</Button>
+        <Button type="primary" htmlType="submit">Envoyer</Button>
      </center>
   </div>
 

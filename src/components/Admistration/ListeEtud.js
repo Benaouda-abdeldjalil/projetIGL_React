@@ -58,7 +58,7 @@ const data = [
   },
   {
     key: 5,
-    name: 'Minx Tinx',
+    name: 'Abdou Benaouda',
     age:"19 ans",
     option:"blablblablabla",
     option:"blablblablabla",
@@ -67,7 +67,7 @@ const data = [
   },
   {
     key: 6,
-    name: 'Minks tinks',
+    name: 'Abdou Benaouda',
     age:"19 ans",
     option:"blablblablabla",
     option:"blablblablabla",
@@ -125,7 +125,7 @@ const data = [
   {
     key: 12,
     
-    name: 'Minks tinks',
+    name: 'Abdou Benaouda',
     age:"19 ans",
     option:"blablblablabla",
     option:"blablblablabla",
