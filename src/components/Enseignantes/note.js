@@ -41,13 +41,10 @@ class Note extends React.Component {
 		super(props);
 	}
   Envoinote(e){
+	var formData = new FormData($("._elmfrmimg")[0])
     e.preventDefault();
     axios
-		.post('http://127.0.0.1:8000/api/note',{
-			niveau:$('.niveau').find('input').val(),
-      groupe:$('.groupe').find('input').val(),
-      fichier:$('.fichier').find('input').val(),
-		})
+		.post('http://127.0.0.1:8000/api/note',{formData})
 		.then(res=>{
 			alert()
 			console.log(res)
@@ -65,9 +62,9 @@ class Note extends React.Component {
  render (){
 return (
     
- <div onSubmit={this.Envoinote}>
+ <form enctype="multipart/form-data" onSubmit={this.Envoinote}>
      <br /><br /><br /><br />
-    <Dragger {...props} className="fichier">
+    <Dragger name="fichier" {...props} className="fichier">
     <p className="ant-upload-drag-icon">
       <Icon type="inbox" />
     </p>
@@ -84,14 +81,14 @@ return (
     <h3>Choisez l'année et le groupe concernant pour l'affichage</h3>
 
         <InputGroup compact>
-          <Select defaultValue="Année" className="niveau">
+          <Select defaultValue="Année" name="niveau" className="niveau">
             <Option value="1CP">1cp</Option>
             <Option value="2CP">2cp</Option>
             <Option value="1CS">1cs</Option>
             <Option value="2CS">2cs</Option>
             
           </Select>
-          <Select defaultValue="Groupe" className="groupe">
+          <Select defaultValue="Groupe" name="groupe" className="groupe">
             <Option value="g1">1</Option>
             <Option value="g2">2</Option>
             <Option value="g3">3</Option>
@@ -103,7 +100,7 @@ return (
         <br /><br />
         <Button type="primary" htmlType="submit">Envoyer</Button>
      </center>
-  </div>
+  </form>
 
     )
 
@@ -112,7 +109,3 @@ return (
 
 }
 export default Note;
-
-
-
-

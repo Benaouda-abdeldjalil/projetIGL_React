@@ -109,7 +109,7 @@ class CollectionsPage extends React.Component {
               key={item.id}
               actions={[
                 <a onClick={this.showModal} key={`a-${item.id}`}>
-                  Cliquer ici pour Changer Votre Mot de passe
+                   Changer Votre Mot de passe
                 </a>,
               ]}
             >
@@ -118,7 +118,7 @@ class CollectionsPage extends React.Component {
                   <Avatar src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png" />
                 }
                 title={<a href="https://ant.design/index-cn">{item.name}</a>}
-                description="Pour voir le Profile Cliquer sur View Profile "
+                description="Pour Changer Votre Mot de passe Cliquer sur Changer Votre Mot de passe "
               />
             </List.Item>
           )}
